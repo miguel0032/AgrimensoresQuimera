@@ -1,0 +1,47 @@
+﻿
+<div class="card" style="height:auto">
+    <div class="card-body p-1 m-1">
+        @*<a onclick="showInPopup('@Url.Action("AddOrEdit","Solicitudes",null,Context.Request.Scheme)','Nueva Parcela')"
+            class="btn btn-primary text-light float-left btn-sm">Nueva <i class="fa fa-plus-square"></i></a>*@
+        <a asp-action="Create" class="btn btn-primary text-light float-left btn-sm">
+            Nueva <i class="fa fa-plus-square"></i>
+        </a>
+        <table id="OpinionesT" class="table display responsive" width="100%">
+            <thead>
+                <tr>
+                    <th style="width:30%">
+                        Expediente
+                    </th>
+                    <th style="width:5%">
+                        Solicitante
+                    </th>
+                    <th style="width:25%">
+                        Asunto
+                    </th>
+                    <th style="width:10%">
+                        Asignados
+                    </th>
+                    <th style="width:10%">
+                        Departamento
+                    </th>
+                    <th style="width:10%">
+                        Digitador
+                    </th>
+                    <th style="width:10%">
+                        fechaAsignado
+                    </th>
+                    <th style="width:10%">
+                        FechaRemision
+                    </th>
+                    <th style="width:10%">
+                        FechaEntrada
+                    </th>
+                    <th style="width:10%">
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+﻿@model ParcelaConsultingWeb.Models.Solicitud
+
+@{
+    Layout = null;
+}
+
+
+<div class="col-md-12 d-flex align-items-stretch flex-column">
+    <div class="card bg-light d-flex flex-fill">
+        <div class="card-header text-muted border-bottom-0">
+
+        </div>
+        <div class="card-body pt-0">
+            <div class="row">
+                <div class="col-7">
+                    <h1 class="lead"><b>Información Parcela</b></h1>
+                    <br />
+                    <br />
+                    <h3 class="lead"><b>Parcela: </b>@Model.Parcelas</h3>
+                    <h4 class="lead"><b>Beneficiario: </b>@Model.Beneficiario</h4>
+
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Recibido : </b>@Model.Recibidos </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Cantidad parcela : </b>@Model.Cantidad_parc </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Número Diarena   : </b>@Model.NumeroDiarena </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Departamento     : </b>@Model.Departamento.Name </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Solar: </b>@Model.Solar </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Manzana: </b>@Model.Manzana </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Comentario: </b>@Model.Comentario </p>
+                    
+                </div>
+                <div class="col-5 text-center">
+                    <i class="fas fa-globe-americas fa-10x text-primary"></i>
+                    <p class="text-muted text-sm pt-2"><b><i class="fas fa-map-marker-alt"></i> @Model.Municipio.Provincia.Name - </b>@Model.Municipio.Name </p>
+                    <br />
+                    <p>Entrada: <span>@Model.FechadeEntrada.ToShortDateString()</span></p>
+                    @if (@Model.FechaAsignacion.ToShortDateString() == "1/1/0001")
+                    {
+                        <p>Asignación: <span>N/A</span></p>
+                    }
+                    else
+                    {
+                        <p>Asignación: <span>@Model.FechaAsignacion.ToShortDateString()</span></p>
+                    }
+                    @if (@Model.FechaEnviado.ToShortDateString() == "1/1/0001")
+                    {
+                        <p>Enviado: <span>N/A</span></p>
+                    }
+                    else
+                    {
+                        <p>Enviado: <span>@Model.FechaEnviado.ToShortDateString()</span></p>
+                    }
+                    <br />
+                    @if (@Model.Usuario == null)
+                    {
+                        <p class="text-muted text-sm pt-2"><b><i class="fas fa-user"></i> Usuario asignado - </b>N/A </p>
+
+                    }
+                    else
+                    {
+                        <p class="text-muted text-sm pt-2"><b><i class="fas fa-user"></i> Usuario asignado - </b>@Model.Usuario.FullName </p>
+
+                    }
+                    @if (@Model.DigitadorInforme == "" || @Model.DigitadorInforme == null)
+                    {
+                        <p class="text-muted text-sm pt-0 mt-0 float-left"><b><i class="fas fa-file"></i> Informe - </b>N/A</p>
+
+                    }
+                    else
+                    {
+                        <p class="text-muted text-sm pt-0 mt-0 float-left"><b><i class="fas fa-file"></i> Informe - </b>@Model.DigitadorInforme </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

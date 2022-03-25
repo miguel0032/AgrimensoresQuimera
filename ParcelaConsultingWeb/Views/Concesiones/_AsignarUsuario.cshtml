@@ -1,0 +1,22 @@
+﻿ @model ParcelaConsultingWeb.ViewModels.AsignarUsuarioViewModel
+
+
+
+<form asp-action="AsignarUsuario" asp-route-id="@Model.Id" onsubmit="return jQueryAjaxPost(this);">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">Usuario</label>
+                <select asp-for="UserId" class="form-control">
+                    <option class="selected" value="-1">Asigna un Usuario</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <input type="submit" value="Asignar" class="btn btn-primary float-right" />
+    </div>
+</form>
+

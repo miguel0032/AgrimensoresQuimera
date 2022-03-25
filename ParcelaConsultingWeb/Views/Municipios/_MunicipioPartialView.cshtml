@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ParcelaConsultingWeb.Models.Municipio>
+<div class="table-responsive-md">
+    <table class="table settingsTable" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Descripción
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="text-center">
+                    <a onclick="loadPartialMunicipio(@item.MunicipioId)"><i class="fa fa-marker fa-lg"></i></a> |
+            
+                    <a onclick="deleteItem(@item.MunicipioId, '/Municipios/MunicipioDelete/')"
+                       class="text-danger">
+                        <i class="fa fa-trash fa-lg"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

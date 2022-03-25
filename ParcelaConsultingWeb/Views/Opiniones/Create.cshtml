@@ -1,0 +1,133 @@
+﻿@model ParcelaConsultingWeb.Models.Opinion
+
+@{
+    ViewData["Title"] = "Opiniones";
+}
+
+<form asp-action="create">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card p-2 elevation-1">
+                <div class="card-header bg-gradient-light border-info">
+                    <h5 class="float-right text-info">Concesion</h5>
+                </div>
+                <div class="card-body">
+                  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                  <div class="row">
+                      <!-- Col-md-6 -->
+                      <div class="col-md-14">
+                          <div class="row">
+                              <!-- Parcela -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="Expediente" class="control-label"></label>
+                                      <input asp-for="Expediente" class="form-control" />
+                                      <span asp-validation-for="Expediente" class="text-danger"></span>
+                                  </div>
+                              </div>
+                              <!-- Beneficiario -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="Solicitante" class="control-label"></label>
+                                      <input asp-for="Solicitante" class="form-control"/>
+                                      <span asp-validation-for="Solicitante" class="text-danger"></span>
+                                  </div>
+                              </div>
+                                <!-- fechaAsignado -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="fechaAsignado" class="control-label"></label>
+                                      <input type="date" asp-for="fechaAsignado" class="form-control"/>
+                                      <span asp-validation-for="fechaAsignado" class="text-danger"></span>
+                                  </div>
+                              </div>
+                                  <!-- FechaEntrada -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="FechaEntrada" class="control-label"></label>
+                                      <input type="date" asp-for="FechaEntrada" class="form-control"/>
+                                      <span asp-validation-for="FechaEntrada" class="text-danger"></span>
+                                  </div>
+                              </div>
+                              <!-- Asunto -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="Asunto" class="control-label"></label>
+                                      <input asp-for="Asunto" class="form-control" />
+                                      <span asp-validation-for="Asunto" class="text-danger"></span>
+                                  </div>
+                              </div>
+                              <!-- Beneficiario -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="Digitador" class="control-label"></label>
+                                      <input asp-for="Digitador" class="form-control" />
+                                      <span asp-validation-for="Digitador" class="text-danger"></span>
+                                  </div>
+                              </div>
+                                  <!-- RemitidoDiarena -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label asp-for="RemitidoDiarena" class="control-label"></label>
+                                      <input asp-for="RemitidoDiarena" class="form-control" />
+                                      <span asp-validation-for="RemitidoDiarena" class="text-danger"></span>
+                                  </div>
+                              </div>
+                              <!-- No diarena -->
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label class="control-label">Asunto</label>
+                                      <input asp-for="Asunto" class="form-control" />
+                                      <span asp-validation-for="Asunto" class="text-danger"></span>
+                                  </div>
+                              </div>
+                              <!-- Departamento -->
+                              <div class="col-md-8">
+                                  <div class="form-group">
+                                      <label class="control-label">Departamento</label>
+                                      <select asp-for="DepartamentoId" class="form-control">
+                                          <option class="selected" value="-1"></option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Asignado -->
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label class="control-label">Asignado</label>
+                              <input asp-for="Asignados" class="form-control" />
+                          </div>
+                      </div>
+                        
+                            <!-- Fecha creacion -->
+                          <div class="col-md-12">
+                              <div class="form-group">
+                                  <label class="control-label">Fecha Remision</label>
+                                  <input type="date" asp-for="FechaRemision" class="form-control"/>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- End Col-md-6 -->
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label asp-for="Comentario" class="control-label"></label>
+                              <textarea asp-for="Comentario" class="form-control" rows="3"></textarea>
+                              <span asp-validation-for="Comentario" class="text-danger"></span>
+                          </div>
+                      </div>
+                      <div class="form-group col-md-12">
+                          <input type="submit" value="Guardar" class="btn btn-primary float-right"/>
+                      </div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

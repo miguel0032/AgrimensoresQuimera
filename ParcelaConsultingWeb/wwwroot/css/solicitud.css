@@ -1,0 +1,57 @@
+﻿
+$bg-color: #f8f8f8;
+$control-bg-color: #5f7c8a;
+$control-tx-color: #f8f8f8;
+$control-brd-color: #516a76;
+
+%font-base {
+    font-family: helvetica, arial;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+%border-radius-base {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}
+
+%control-base {
+    background-color: $control-bg-color;
+    color: $control-tx-color;
+    border: 1px solid $control-brd-color;
+    @extend %border-radius-base;
+    @extend %font-base;
+}
+
+body {
+    background-color: $bg-color;
+}
+
+.alert-container {
+    @extend %control-base;
+    position: fixed;
+    bottom: 5px;
+    left: 2%;
+    width: 50%;
+    margin: 0 25% 0 25%;
+    .alert
+
+{
+    text-align: center;
+    padding: 17px 0 20px 0;
+    margin: 0 25% 0 25%;
+    height: 54px;
+    font-size: 20px;
+}
+}
+
+
+

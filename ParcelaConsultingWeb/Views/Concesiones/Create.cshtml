@@ -1,0 +1,123 @@
+﻿@model ParcelaConsultingWeb.Models.Concesion
+
+@{
+    ViewData["Title"] = "Concesiones";
+}
+
+<form asp-action="create">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card p-2 elevation-1">
+                <div class="card-header bg-gradient-light border-info">
+                    <h5 class="float-right text-info">Concesion</h5>
+                </div>
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <!-- Col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- Parcela -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="NoExpediente" class="control-label"></label>
+                                        <input asp-for="NoExpediente" class="form-control" />
+                                        <span asp-validation-for="NoExpediente" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Beneficiario -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="FechaAsignacion" class="control-label"></label>
+                                        <input type="date" asp-for="FechaAsignacion" class="form-control" />
+                                        <span asp-validation-for="FechaAsignacion" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Asunto -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Asunto" class="control-label"></label>
+                                        <input asp-for="Asunto" class="form-control" />
+                                        <span asp-validation-for="Asunto" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Beneficiario -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="DiarenaNo" class="control-label"></label>
+                                        <input asp-for="DiarenaNo" class="form-control" />
+                                        <span asp-validation-for="DiarenaNo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- No diarena -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Numero Diarena</label>
+                                        <input asp-for="Asunto" class="form-control" />
+                                        <span asp-validation-for="Asunto" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Departamento -->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="control-label">Departamento</label>
+                                        <select asp-for="DepartamentoId" class="form-control">
+                                            <option class="selected" value="-1"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Asignado -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Asignado</label>
+                                <input asp-for="Asignado" class="form-control" />
+                            </div>
+                        </div>
+                        <!-- Asignado -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Remitente</label>
+                                <input asp-for="Remitente" class="form-control" />
+                            </div>
+                            <!-- Fecha creacion -->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Fecha creación</label>
+                                    <input type="date" asp-for="FechaAsignacion" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FechaEnviado -->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Fecha creación</label>
+                                    <input type="date" asp-for="FechaEnviado" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Col-md-6 -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Comentario" class="control-label"></label>
+                                <textarea asp-for="Comentario" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="Comentario" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" value="Guardar" class="btn btn-primary float-right" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

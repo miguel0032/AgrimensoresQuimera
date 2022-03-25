@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ParcelaConsultingWeb</title>
+    <!--Charp-->
+    <link href="~/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/vendor/chart.js/Chart.css" />
+    <link href="~/vendor/chart.js/Chart.min.css" />
+    <!-- styles -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
+    <!-- Main styles -->
+    <link rel="stylesheet" href="/css/site.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link href="~/plugins/fontawesome-free-6.0.0-web/css/all.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Jquery -->
+    <link href="/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="/plugins/fullcalendar/main.min.css">
+    <link rel="stylesheet" href="/plugins/fullcalendar-daygrid/main.min.css">
+    <link rel="stylesheet" href="/plugins/fullcalendar-timegrid/main.min.css">
+    <link rel="stylesheet" href="/plugins/fullcalendar-bootstrap/main.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+    <!-- Datatable Buttons -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="/plugins/datatables-autofill/css/autoFill.bootstrap4.min.css" />
+    <link rel="stylesheet" href="/plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css" />
+    <link rel="stylesheet" href="/plugins/datatables-fixedheader/css/fixedHeader.bootstrap4.min.css" />
+    <link rel="stylesheet" href="/plugins/datatables-select/css/select.bootstrap4.min.css" />
+
+    <!-- Template -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/sweetalert2/package/dist/sweetalert2.min.css" />
+
+    <!-- Font -->
+    @*<link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css" />*@
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
+</head>
+<body class="text-sm layout-fixed small" style="height: auto;">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light text-sm border-bottom-0">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                @*<li class="nav-item d-none d-sm-inline-block">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="#" class="nav-link">Contactos</a>
+                    </li>*@
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <partial name="_LoginPartial" />
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                @*<img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">*@
+                <span class="brand-text font-weight-bold">Parcela</span>
+                <span class="brand-text font-weight-light">Consulting</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar os-host os-theme-light os-host-overflow os-host-resize-disabled os-host-transition os-host-overflow-y os-host-scrollbar-horizontal-hidden">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-compact" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Inicio -->
+                        <li class="nav-item">
+                            <a active-when="/Home/Index" asp-controller="Home" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <!-- Solicitudes -->
+                        <li class="nav-item">
+                            <a active-when="/Solicitudes/Index" asp-controller="Solicitudes" asp-action="Index" class="nav-link">
+                                <i class="fa fa-id-card-alt nav-icon"></i>
+                                <p>Solicitudes</p>
+                            </a>
+                        </li>
+                        <!-- Solicitudes -->
+                        <li class="nav-item">
+                            <a active-when="/Concesiones/Index" asp-controller="Concesiones" asp-action="Index" class="nav-link">
+                                <i class="fa fa-user nav-icon"></i>
+                                <p>Concesiones</p>
+                            </a>
+                        </li>
+                        <!-- Opiniones -->
+                        <li class="nav-item">
+                            <a active-when="/Opiniones/index" asp-controller="Opiniones" asp-action="Index" class="nav-link">
+                                <i class="fa fa-user-clock nav-icon"></i>
+                                <p>Opiniones</p>
+                            </a>
+                        </li>
+                        <!-- Municipios -->
+                        <li class="nav-item">
+                            <a active-when="/Municipios/Index" asp-controller="Municipios" asp-action="Index" class="nav-link">
+                                <i class="fa fa-map-pin nav-icon"></i>
+                                <p>Municipios</p>
+                            </a>
+                        </li>
+                        <!-- Usuarios -->
+                        <li class="nav-item">
+                            <a active-when="/Users/Index" asp-controller="Users" asp-action="Index" class="nav-link">
+                                <i class="fa fa-user-circle nav-icon"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+                        <!-- Roles -->
+                        <li class="nav-item">
+                            <a active-when="/Role/Index" asp-controller="Role" asp-action="Index" class="nav-link">
+                                <i class="fa fa-user-edit nav-icon"></i>
+                                <p>Roles</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!--<div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+                        </div>-->
+            <!-- /.col -->
+            <!--<div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                    <li class="breadcrumb-item">@ViewData["Title"]</li>
+                </ol>
+            </div>-->
+            <!-- /.col -->
+            <!--</div>--><!-- /.row -->
+            <!--</div>--><!-- /.container-fluid -->
+            <!--</div>-->
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid pt-1 mt-1">
+
+
+                    <div class="modal" tabindex="-1" role="dialog" id="form-modal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="loaderbody" id="loaderbody">
+                        <div class="loader"></div>
+                    </div>
+                    @RenderBody()
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+
+        <div class="modal" tabindex="-1" role="dialog" id="form-modal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="border:1px solid #666;background-color: rgba(0, 0, 0, 0.1) !important;color: #000 !important;">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body bg-gradient-light" style="border:1px solid #666;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2021-2022 <a href="#">APP AMBIENTE</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0
+        </div>
+    </footer>
+      <!--chart-->
+
+        <script src="~/vendor/chart.js/Chart.bundle.min.js"></script>
+        <script src="~/vendor/chart.js/Chart.min.js"></script>
+        <script src="~/vendor/chart.js/Chart.bundle.js"></script>
+        <script src="~/vendor/chart.js/chart.js"></script>
+        <script src="~/vendor/jquery/jquery.js"></script>
+        <script src="~/vendor/popper.js/umd/popper.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.js"></script>
+
+
+    <!-- ./wrapper -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="/plugins/daterangepicker/moment.min.js"></script>
+    <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Validations -->
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <!-- Select2 -->
+    <script src="/plugins/select2/js/select2.min.js"></script>
+    <!-- Toast -->
+    <script src="/plugins/toastr/toastr.min.js"></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="/plugins/moment/moment.min.js"></script>
+    <script src="/plugins/moment/moment-with-locales.js"></script>
+    <!-- DataTable -->
+    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="/plugins/datatables-autofill/js/dataTables.autoFill.min.js"></script>
+    <script src="/plugins/datatables-autofill/js/autoFill.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-fixedcolumns/js/fixedColumns.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-fixedheader/js/fixedHeader.bootstrap4.min.js"></script>
+    <!-- Select -->
+    <script src="/plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <!-- Datatable Buttons -->
+    <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.flash.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+    <script src="/plugins/jszip/jszip.min.js"></script>
+    <script src="/plugins/pdfmake/pdfmake.js"></script>
+    <script src="/plugins/pdfmake/vfs_fonts.js"></script>
+    <!-- SwrrtAlert2 -->
+    <script src="/sweetalert2/package/dist/sweetalert2.all.min.js"></script>
+    <script src="/sweetalert2/package/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+
+
+
+
+
+    <!-- decimal Js -->
+    @*<script src="~/js/decimal.min.js"></script>
+        <script src="~/js/accounting.min.js"></script>*@
+    <!-- Mask -->
+    @*<script src="~/lib/jquerymask/src/jquery.mask.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>*@
+
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+
+    <script src="/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $(document).on('focus', ':input', function () {
+                $(this).attr('autocomplete', 'off');
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.btn-bot {
+    position: absolute;
+    margin-left: -50px;
+    left: 50%;
+    width: 100px;
+    bottom: 0px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.caja {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80% !important;
+}
+
+/*loader*/
+/*.loaderbody {
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background-color: rgba(128,128,128,0.2);
+    z-index: 2147483647;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;*/ /* Light grey */
+    /*border-top: 16px solid #003777;*/ /* Blue */
+    /*border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 38%;
+    left: 50%;
+}*/
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hide {
+    display: none;
+}
+
+
+
+
+.box {
+    width: 220px;
+    height: 170px;
+    overflow: hidden;
+}
+
+    .box img {
+        width: 100%;
+        height: auto;
+    }
+
+@supports(object-fit: cover) {
+    .box img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+
+.cajaP {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80% !important;
+}
+
+.boxP {
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+}
+
+    .boxP img {
+        width: 100%;
+        height: auto;
+    }
+
+@supports(object-fit: cover) {
+    .boxP img {
+        height: 70%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+
+p {
+    width: auto;
+    margin: 10px auto;
+    padding: 1px;
+    font: normal 13px arial, helvetica, sans-serif;
+}
+
+    p#normal {
+        white-space: normal;
+    }
+
+    p#pre {
+        white-space: pre;
+    }
+
+    p#nowrap {
+        white-space: nowrap;
+    }
+
+    p#prewrap {
+        white-space: pre-wrap;
+    }
+
+    p#preline {
+        white-space: pre-line;
+    }

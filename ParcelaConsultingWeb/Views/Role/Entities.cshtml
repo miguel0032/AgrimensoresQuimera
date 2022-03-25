@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Entidades";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="pr-2">
+                            <a type="button" asp-controller="Role" asp-action="Index" class="btn btn-sm btn-light border-left ">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <section class="content">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Nueva Entidad</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="rolDivPartial">
+                                                    @await Html.PartialAsync("_EntityAddOrEdit", new ParcelaConsultingWeb.Models.Permission())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-md-8">
+                            <partial name="_EntitiesPartialView.cshtml" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function loadPartialRol(id) {
+            $('#rolDivPartial').load('/Role/GetPartialRoles?id=' + id);
+        };
+
+        function DeleteRole(data) {
+            Swal.fire({
+                title: 'Estas Seguro?',
+                text: "Esta Acción no se podra revertir!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Si, Eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/Role/RoleDelete?id=' + data,
+                        success: function (data) {
+                            if (data) {
+                                location.reload();
+                                Swal.fire(
+                                    'Eliminado!',
+                                    'El registro ha sido eliminada.',
+                                    'success'
+                                )
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'No se puede Eliminar',
+                                    text: 'Este registro esta ligado!',
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+}

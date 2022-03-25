@@ -1,0 +1,71 @@
+﻿@model ParcelaConsultingWeb.Models.Concesion
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<div class="col-md-12 d-flex align-items-stretch flex-column">
+    <div class="card bg-light d-flex flex-fill">
+        <div class="card-header text-muted border-bottom-0">
+        </div>
+        <div class="card-body pt-0">
+            <div class="row">
+                <div class="col-7">
+                    <h1 class="lead"><b>Información Concepsion</b></h1>
+                    <br />
+                    <br />
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Expediente: </b>@Model.NoExpediente</p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Asignado: </b>@Model.Asignado</p>
+
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Asunto:</b>@Model.Asunto </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>DiarenaNo: </b>@Model.DiarenaNo </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Fecha: </b>@Model.Fecha </p>
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1"><b>Departamento: </b>@Model.Departamento.Name </p>
+                    <br />
+                </div>
+                <div class="col-5 text-center">
+                    <i class="fas fa-map fa-10x text-primary"></i>
+                    <br />
+                    <br />
+                    <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1">Entrada: <span>@Model.FechaAsignacion.ToShortDateString()</span></p>
+                    @if (@Model.FechaAsignacion.ToShortDateString() == "1/1/0001")
+                    {
+                        <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1">Asignación: <span>N/A</span></p>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1">Asignación: <span>@Model.FechaAsignacion.ToShortDateString()</span></p>
+                    }
+                    @if (@Model.FechaEnviado.ToShortDateString() == "1/1/0001")
+                    {
+                        <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1">Enviado: <span>N/A</span></p>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-sm pt-1 mt-1 pb-1 mb-1">Enviado: <span>@Model.FechaEnviado.ToShortDateString()</span></p>
+                    }
+
+                </div>
+
+            </div>
+            <hr />
+            @if (@Model.Usuario == null)
+            {
+                <p class="text-muted text-sm pt-2"><b><i class="fas fa-user"></i> Usuario asignado - </b>N/A </p>
+            }
+            else
+            {
+                <p class="text-muted text-sm pt-2"><b><i class="fas fa-user"></i> Usuario asignado - </b>@Model.Usuario.FullName </p>
+            }
+            @if (@Model.Asunto == "" || @Model.Asunto == null)
+            {
+                <p class="text-muted text-sm pt-1 mt-0 float-left"><b><i class="fas fa-file"></i> Informe - </b>N/A</p>
+            }
+            else
+            {
+                <p class="text-muted text-sm pt-0 mt-0 float-lead"><b><i class="fas fa-file"></i> Informe - </b>@Model.Asunto </p>
+            }
+        </div>
+
+    </div>
+</div>

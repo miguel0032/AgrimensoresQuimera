@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Municipios";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="pr-2">
+                            <a type="button" asp-controller="Home" asp-action="Index" class="btn btn-sm btn-light border-left ">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <section class="content">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Nuevo Municipio</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="municipioDivPartial">
+                                                    @await Html.PartialAsync("_MunicipioAddOrEdit", new ParcelaConsultingWeb.Models.Municipio())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-md-8">
+                            <partial name="_MunicipioPartialView.cshtml" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function loadPartialMunicipio(id) {
+            $('#municipioDivPartial').load('/Municipios/GetPartialMunicipio/' + id);
+        };
+    </script>
+}

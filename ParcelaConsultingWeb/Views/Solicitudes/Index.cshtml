@@ -1,0 +1,29 @@
+﻿ 
+@{
+    ViewData["Title"] = "Solicitudes";
+}
+
+<div id="solicitudes">
+    <partial name="_ListaSolicitudes.cshtml" />
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="details-modal" style="text-decoration:wavy auto">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content p-0 m-0">
+            <div class="modal-body p-0 m-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/solicitud.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}    
+
+    <script type="text/javascript">
+        GetMunicipio();
+        GetDepartamento();
+        GetGataSolicitudes();
+    </script>
+
+}

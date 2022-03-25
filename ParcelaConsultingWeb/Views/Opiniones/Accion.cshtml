@@ -1,0 +1,182 @@
+﻿@model ParcelaConsultingWeb.Models.Accion
+
+@{ ViewData["Title"] = "Accion"; }
+
+@*<div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+        <div class="card p-2 elevation-1">
+            <div class="card-header bg-gradient-secondary">
+                Accion
+            </div>
+            <div class="card-body">
+                <form asp-action="Accion" asp-route-id="@Model.Id" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input asp-for="Create" type="hidden" />
+                    <input asp-for="LastModifier" type="hidden" />
+                    <input asp-for="Active" type="hidden" />
+                    <div class="row">
+                        <!-- Col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Concesion" class="control-label"></label>
+                                        <select asp-for="ConcesionId" class="form-control" disabled asp-items="ViewBag.ConcesionId"></select>
+                                        <input type="hidden" asp-for="ConcesionId" />
+                                        <span asp-validation-for="ConcesionId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="control-label">Tipo de Acción</label>
+                                        <select asp-for="TipoAccionId" class="form-control" asp-items="ViewBag.TipoAccionId"></select>
+                                        <span asp-validation-for="TipoAccionId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Nombre" class="control-label"></label>
+                                        <input asp-for="Nombre" class="form-control" />
+                                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Col-md-6 -->
+                        <!-- Col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Descripción</label>
+                                        <textarea asp-for="Descripcion" class="form-control" rows="4"></textarea>
+                                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Col-md-6 -->
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-primary float-right" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+
+        $("#tipoAccionDiv").hide();
+        $("#asignarUsuarioId").hide();
+
+        function selectedTipe() {
+
+            $("#tipoAccionDiv").show();
+            var tipoSolicitud = $("#TipoAccionId").val();
+
+            if (tipoSolicitud == 3) {
+
+                var solicitudId = $("#SolicitudId").val();
+                getAsignarUsuarioView(solicitudId);
+
+            } else if (tipoSolicitud == 4) {
+
+                $("#typeTitle").text("Solicitud");
+
+            } else if (tipoSolicitud == 5) {
+
+                $("#typeTitle").text("Concepciones");
+
+            } else if (tipoSolicitud == 6) {
+
+                $("#typeTitle").text("Opiniones");
+            } else {
+
+                $("#tipoAccionDiv").hide();
+                $("#typeTitle").text("");
+            }
+        }
+
+        function getAsignarUsuarioView(id) {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Content("~/Concesiones/AsignarUsuario")',
+                data: {
+                    id: id
+                },
+                success: function (result) {
+                    $("#asignarUsuarioId").html(result);
+                    $("#asignarUsuarioId").show();
+                    GetUsuario();
+                }
+            });
+        }
+
+        function GetUsuario() {
+            $("#UserId").select2({
+                placeholder: "Select",
+                theme: "bootstrap4",
+                allowClear: true,
+                ajax: {
+                    url: "/Base/GetUsuarioLogger",
+                    contentType: "application/json; charset=utf-8",
+                    data: function (params) {
+                        var query =
+                        {
+                            term: params.term,
+                        };
+                        return query;
+                    },
+                    processResults: function (result) {
+                        return {
+                            results: $.map(result, function (item) {
+                                return {
+                                    id: item.id,
+                                    text: item.name
+                                };
+                            }),
+                        };
+                    }
+                }
+            });
+        }
+
+        function asignarUsuario() {
+            var concesionId = $("#ConcesionId").val();
+            var userId = $("#UserId").val();
+            try {
+                $.ajax({
+                    type: 'POST',
+                    url: "/Concesiones/AsignarUsuario?id=" + concesionId + "&userId=" + userId,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        if (res.isValid) {
+                            Swal.fire(
+                                'Bien!',
+                                res.message,
+                                'success'
+                            )
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                })
+                //to prevent default form submit event
+                return false;
+            } catch (ex) {
+                console.log(ex)
+            }
+        }
+
+    </script>
+
+}
+*@

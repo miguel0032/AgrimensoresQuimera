@@ -1,0 +1,33 @@
+﻿
+
+<table id="datatable" class="table display responsive nowrap table-bordered" width="100%">
+    <thead>
+        <tr>
+            <th style="width:30%">
+                Nombre
+            </th>
+            <th style="width:45%">
+                Descripcion
+            </th>
+            <th style="width:15%">
+                Tipo
+            </th>
+            <th style="width:10%">
+                Fecha
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var accion in Model)
+            {
+                <tr>
+                    <td>@accion.Nombre</td>
+                    <td>@accion.Descripcion</td>
+                    <td>@accion.TipoAccion</td>
+                    <td>@accion.Create</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

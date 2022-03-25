@@ -1,0 +1,124 @@
+﻿@model ParcelaConsultingWeb.ViewModels.EUserViewModel
+
+@{
+    ViewData["Title"] = "Usuario";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Información del Usuario Obligatória</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Usuario</label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Rol</label>
+                                    <select asp-for="Rol" class="form-control" id="SelectRole"></select>
+                                    <span asp-validation-for="Rol" class="text-danger"></span>
+                                </div>
+                            </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Telefono</label>
+                                <input asp-for="PhoneNumber" class="form-control" required />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Nombre completo</label>
+                                <input asp-for="FullName" class="form-control" required />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Contraseña</label>
+                                <input type="password" asp-for="Password" value="@Model.Password" class="form-control" required />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Confirmación</label>
+                                <input type="password" name="confirmacion" value="@Model.Password" class="form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Correo</label>
+                                <input asp-for="Email" class="form-control" required />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index" type="text/asp">Volver a la lista</a>
+    <input type="submit" value="Registrar" class="btn btn-success float-right">
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    GetRoles();
+    function GetRoles() {
+        $("#SelectRole").select2({
+            placeholder: "Select",
+            theme: "bootstrap4",
+            allowClear: true,
+            ajax: {
+                url: "/Users/GetRoles",
+                contentType: "application/json; charset=utf-8",
+                data: function (params) {
+                    var query =
+                    {
+                        term: params.term,
+                    };
+                    return query;
+                },
+                processResults: function (result) {
+                    return {
+                        results: $.map(result, function (item) {
+                            return {
+                                id: item.id,
+                                text: item.name
+                            };
+                        }),
+                    };
+                }
+            }
+        });
+    }
+</script>
+
+}

@@ -1,0 +1,47 @@
+﻿<div class="card" style="height:auto">
+    <div class="card-body p-1 m-1">
+        @*<a onclick="showInPopup('@Url.Action("AddOrEdit","Solicitudes",null,Context.Request.Scheme)','Nueva Parcela')"
+            class="btn btn-primary text-light float-left btn-sm">Nueva <i class="fa fa-plus-square"></i></a>*@
+        <a asp-action="Create" class="btn btn-primary text-light float-left btn-sm">
+            Nueva <i class="fa fa-plus-square"></i>
+        </a>
+        <table id="ConcesionesT" class="table display responsive" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        No Expediente
+                    </th>
+
+                    <th>
+                        Remitente
+                    </th>
+                    <th>
+                        Asunto
+                    </th>
+                    <th>
+                        Asignado
+                    </th>
+                    <th>
+                        Fecha Asignacion
+                    </th>
+                    <th>
+                        Fecha Enviado
+                    </th>
+                    <th>
+                        Diarena No.
+                    </th>
+                  
+                    <th>
+                        Departamento
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

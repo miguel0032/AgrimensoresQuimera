@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ParcelaConsultingWeb.Models.Opinion>
+
+
+<div class="card" style="height:auto">
+    <div class="card-body p-2 m-2">
+        <a asp-action="Create" class="btn btn-primary text-light float-left btn-sm">
+            Nueva <i class="fa fa-plus-square"></i>
+        </a>
+        <table id="#" class="table display responsive" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Expediente)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Solicitante)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Asunto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Asignados)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fechaAsignado)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.RemitidoDiarena)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaRemision)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Departamento)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Expediente)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Solicitante)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Asunto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Asignados)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaAsignado)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RemitidoDiarena)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaRemision)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Departamento.Name)
+                        </td>
+
+                        <td>
+                            <div class="row-cols-1">
+                                <a asp-action="UserId" asp-route-id="@item.Id" class="btn btn-txt"><i class="fa fa-user fa-fw"></i></a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-txt"><i class="fa fa-pen-clip"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-txt"><i class="fa fa-eye-low-vision"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

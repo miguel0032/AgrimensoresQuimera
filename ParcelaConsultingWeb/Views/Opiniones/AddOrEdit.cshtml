@@ -1,0 +1,167 @@
+﻿@model ParcelaConsultingWeb.Models.Opinion
+
+@{ ViewData["Title"] = "Concesion"; }
+
+<form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return jQueryAjaxPost(this);">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card p-2 elevation-1">
+                <div class="card-header bg-gradient-light border-info">
+                    <h5 class="float-right text-info">Opinion</h5>
+                </div>
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="fechaAsignado" />
+                    <input type="hidden" asp-for="FechaEntrada" />
+                    <input type="hidden" asp-for="UsuarioId" />
+                    <input type="hidden" asp-for="Usuario" />
+                    <input type="hidden" asp-for="Status" />
+                    <div class="row">
+                        <!-- Col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- Parcela -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Expediente" class="control-label"></label>
+                                        <input asp-for="Expediente" class="form-control" />
+                                        <span asp-validation-for="Expediente" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Beneficiario -->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label asp-for="Solicitante" class="control-label"></label>
+                                        <input asp-for="Solicitante" class="form-control" />
+                                        <span asp-validation-for="Solicitante" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Fecha -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Fecha creación</label>
+                                        <input asp-for="FechaEntrada" class="form-control" disabled />
+                                    </div>
+                                </div>
+                                <!-- No diarena -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Numero Diarena</label>
+                                        <input asp-for="Asunto" class="form-control" />
+                                        <span asp-validation-for="Asunto" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Recibido -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Digitador" class="control-label"></label>
+                                        <input asp-for="Digitador" class="form-control" />
+                                        <span asp-validation-for="Digitador" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- Cantidad -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Remitidor Diarena</label>
+                                        <input asp-for="RemitidoDiarena" class="form-control" />
+                                        <span asp-validation-for="RemitidoDiarena" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- Fecha -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Fecha Remision</label>
+                                        <input asp-for="FechaRemision" class="form-control" disabled />
+                                    </div>
+                                </div>
+                               
+                                <!-- Departamento -->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="control-label">Departamento</label>
+                                        <select asp-for="DepartamentoId" class="form-control">
+                                            <option class="selected" value="-1"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Col-md-6 -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Comentario" class="control-label"></label>
+                                <textarea asp-for="Comentario" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="Comentario" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" value="Guardar" class="btn btn-primary float-right" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card p-2 elevation-1">
+                <div class="card-header bg-gradient-light border-info">
+                    <h5 class="float-right text-info">Usuario</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label class="control-label">Usuario</label>
+                                <input asp-for="Usuario.FullName" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Fecha Asignacion</label>
+                                <input asp-for="fechaAsignado" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+        <div class="card p-2 elevation-2">
+            <div class="card-header bg-gradient-light border-info">
+                <h5 class="float-right text-info">Acciones</h5>
+                <a id="btnAccion" asp-action="Accion" asp-route-solicitudId="@Model.Id"
+                   class="btn btn-outline-info btn-sm">Nueva Accion</a>
+            </div>
+            <div class="card-body">
+                <partial name="_Acciones.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Opiniones.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $('#btnAccion').click(function () {
+            window.location.href = '/Opiniones/Accion?opinionesId=' + opinionesId;
+        });
+
+        var id = $("#Id").val();
+        Acciones(id);
+    </script>
+}

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<ParcelaConsultingWeb.ViewModels.EntitiesByRole>
+
+@{
+    ViewData["Title"] = "Permisos para " + ViewBag.roleName;
+}
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="pr-2">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a asp-controller="Role" asp-action="Index" class="btn btn-sm btn-light border-left ">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                                <a type="button" asp-controller="Role" asp-action="AddEntitiesToRole" asp-route-roleId="@ViewBag.roleId"
+                                   class="btn btn-sm btn-light border-dark d-inline">
+                                    Agregar Entidades <i class="fa fa-user-lock"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr class="bg-gradient-secondary">
+                                                <th style="width:32%;">Entidad</th>
+                                                <th class="text-center" style="width:17%;">Crear</th>
+                                                <th class="text-center" style="width:17%;">Leer</th>
+                                                <th class="text-center" style="width:17%;">Actualizar</th>
+                                                <th class="text-center" style="width:17%;">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td class="bg-gradient-secondary">
+                                                        <div id="entityId" class="font-weight-bold">@item.EntityName</div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if (item.Create)
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id','Create', '@item.Create'))" type="checkbox" name="createCheckBox" checked/>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id','Create', '@item.Create'))" type="checkbox" name="createCheckBox" />
+                                                        }
+
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if (item.Read)
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id', 'Read', '@item.Read'))" type="checkbox" name="readCheckBox" checked/>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id', 'Read', '@item.Read'))" type="checkbox" name="readCheckBox" />
+                                                        }
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if (item.Update)
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id', 'Update', '@item.Update'))" type="checkbox" name="updateCheckBox" checked />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id', 'Update', '@item.Update'))" type="checkbox" name="updateCheckBox" />
+                                                        }
+
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @if (item.Delete)
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id', 'Delete', '@item.Delete'))" type="checkbox" name="deleteCheckBox" checked/>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input onchange="(CreateChecked('@item.Id', 'Delete', '@item.Delete'))" type="checkbox" name="deleteCheckBox" />
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function loadPartialRol(id) {
+            $('#rolDivPartial').load('/Role/GetPartialRoles?id=' + id);
+        };
+
+        
+
+        function CreateChecked(id,val,item) { 
+
+            $.ajax({
+                type: "POST",
+                url: '/Role/EntityCrud?id=' + id + '&val=' + val + '&item=' + item,
+                success: function (data) {
+
+                }
+            });
+        }
+
+
+    </script>
+}

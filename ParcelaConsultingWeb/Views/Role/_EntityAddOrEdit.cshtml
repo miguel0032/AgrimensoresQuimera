@@ -1,0 +1,23 @@
+﻿@model Permission
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CreateEntity" asp-route-id="@Model.Id" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />            
+            <div class="form-group">
+                <label class="control-label">Entidad</label>
+                <input asp-for="Entity" class="form-control" />
+                <span asp-validation-for="Entity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
